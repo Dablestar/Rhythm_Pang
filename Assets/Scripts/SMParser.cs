@@ -38,10 +38,18 @@ public class SMParser : MonoBehaviour
 	}
 	private void Start()
 	{
-		smFilePath = @".\Assets\Steps\" + title + @"\" + title + @".sm";
+		smFilePath = "./Assets/Steps/" + title + "/" + title + ".sm";
 		Debug.Log(title + " " + smFilePath);
 		Metadata m = ParseMeta(smFilePath);
 		List<List<string>> getData = m.noteData;
+
+		for(int i=0; i<getData.Count; i++)
+		{
+			for(int j=0; j<getData[i].Count; j++)
+			{
+				Debug.Log(getData[i][j]);
+			}
+		}
 
 	}
 	public Metadata ParseMeta(string newFilePath)
@@ -171,17 +179,27 @@ public class SMParser : MonoBehaviour
 	
 	public string getBgPath()
 	{
-		string path = @".\Assets\Steps\" + title + @"\" + title + @".sm";
+		title = "HERO";
+		string path = "./Assets/Steps/" + title + "/" + title + ".sm";
 		Metadata imgPath = ParseMeta(path);
 		return imgPath.bgPath;
 	}
 	public string getBannerPath()
 	{
-		string path = @".\Assets\Steps\" + title + @"\" + title + @".sm";
+		title = "HERO";
+		string path = "./Assets/Steps/" + title + "/" + title + ".sm";
 		Metadata imgPath = ParseMeta(path);
 		return imgPath.bannerPath;
 	}
 	
+	public List<List<string>> getNoteData()
+	{
+		title = "HERO";
+		smFilePath = "./Assets/Steps/" + title + "/" + title + ".sm";
+		Debug.Log(title + " " + smFilePath);
+		Metadata nData = ParseMeta(smFilePath);
+		return nData.noteData;
+	}
 
 
 

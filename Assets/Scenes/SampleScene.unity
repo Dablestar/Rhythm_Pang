@@ -224,6 +224,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 4782697846192616616, guid: 5d98ad13d280bed4d92fdbba40a91207, type: 3}
+  notePrefab: {fileID: 3604601963059952593, guid: 88fe51f1a1b804e49baf4257d12aa4f3,
+    type: 3}
 --- !u!114 &1371327199
 MonoBehaviour:
   m_ObjectHideFlags: 0
