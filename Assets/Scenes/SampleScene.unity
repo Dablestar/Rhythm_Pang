@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smFilePath: 
-  title: HERO
+  title: PRACUTISU
 --- !u!81 &1371327195
 AudioListener:
   m_ObjectHideFlags: 0
@@ -181,7 +181,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 28.272236
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 4782697846192616616, guid: 5d98ad13d280bed4d92fdbba40a91207, type: 3}
-  notePrefab: {fileID: 3604601963059952593, guid: 88fe51f1a1b804e49baf4257d12aa4f3,
+  notePrefab: {fileID: 5227272308331053135, guid: f0907f5532f08754fab856885823d301,
     type: 3}
 --- !u!114 &1371327199
 MonoBehaviour:

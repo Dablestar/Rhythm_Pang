@@ -15,14 +15,14 @@ public class Test : MonoBehaviour
 	int bit8 = 8;
 	int bit12 = 12;
 	int bit16 = 16;
-
+	float bpm;
 	RectTransform prefabRT;
 
 	// Start is called before the first frame update
 	void Start()
 	{
 
-
+		bpm = 185.0f;
 		List<List<string>> chartData = new List<List<string>>();
 		chartData = sm.getNoteData();
 		
@@ -88,5 +88,9 @@ public class Test : MonoBehaviour
 			notePrefab.transform.Translate(new Vector3(0,  noteHeight, 0));
 			
 		}
+	}
+	private void Update()
+	{
+		transform.position += new Vector3(0, bpm / 60f, 0);
 	}
 }
