@@ -124,8 +124,8 @@ GameObject:
   - component: {fileID: 1371327196}
   - component: {fileID: 1371327195}
   - component: {fileID: 1371327194}
-  - component: {fileID: 1371327198}
   - component: {fileID: 1371327199}
+  - component: {fileID: 1371327198}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smFilePath: 
   title: PRACUTISU
+  bpm: 0
 --- !u!81 &1371327195
 AudioListener:
   m_ObjectHideFlags: 0
