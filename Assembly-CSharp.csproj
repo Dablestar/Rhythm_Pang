@@ -62,7 +62,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\ImageManager.cs" />
     <Compile Include="Assets\Scripts\NoteGenerator.cs" />
+    <Compile Include="Assets\Scripts\NoteScroll.cs" />
     <Compile Include="Assets\Scripts\SMParser.cs" />
+    <Compile Include="Assets\Scripts\SoundMgr.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/CHOI-PC/Documents/Rhythm_Pang/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
