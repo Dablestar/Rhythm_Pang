@@ -60,8 +60,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CameraMgr.cs" />
     <Compile Include="Assets\Scripts\ImageManager.cs" />
     <Compile Include="Assets\Scripts\NoteGenerator.cs" />
+    <Compile Include="Assets\Scripts\NoteHitMgr.cs" />
     <Compile Include="Assets\Scripts\NoteScroll.cs" />
     <Compile Include="Assets\Scripts\SMParser.cs" />
     <Compile Include="Assets\Scripts\SoundMgr.cs" />

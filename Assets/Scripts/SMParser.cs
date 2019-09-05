@@ -13,6 +13,8 @@ public class SMParser : MonoBehaviour
 
 	public float bpm;
 
+	public Metadata meta;
+
 	public struct Metadata
 	{
 
@@ -31,17 +33,19 @@ public class SMParser : MonoBehaviour
 		public string difficulty;
 		public List<List<string>> noteData;
 	}
+
+	
 	public struct Notes
 	{
 		public char left;
 		public char right;
 	}
-	private void Start()
+	private void Awake()
 	{
 		smFilePath = "./Assets/Steps/" + title + "/" + title + ".sm";
 		Debug.Log(title + " " + smFilePath);
-		Metadata m = ParseMeta(smFilePath);
-		List<List<string>> getData = m.noteData;
+		meta = ParseMeta(smFilePath);
+		List<List<string>> getData = meta.noteData;
 		
 
 		//for(int i=0; i<getData.Count; i++)
@@ -180,26 +184,20 @@ public class SMParser : MonoBehaviour
 	
 	public string getBgPath()
 	{
-		title = "PRACUTISU";
-		smFilePath = "./Assets/Steps/" + title + "/" + title + ".sm";
-		Metadata imgPath = ParseMeta(smFilePath);
-		return imgPath.bgPath;
+		return meta.bgPath;
 	}
 	public string getBannerPath()
-	{
-		title = "PRACUTISU";
-		smFilePath = "./Assets/Steps/" + title + "/" + title + ".sm";
-		Metadata imgPath = ParseMeta(smFilePath);
-		return imgPath.bannerPath;
+	{ 
+		return meta.bannerPath;
 	}
 	
 	public List<List<string>> getNoteData()
 	{
-		title = "PRACUTISU";
-		smFilePath = "./Assets/Steps/" + title + "/" + title + ".sm";
-		Debug.Log(title + " " + smFilePath);
-		Metadata nData = ParseMeta(smFilePath);
-		return nData.noteData;
+		return meta.noteData;
+	}
+	public float setOffset()
+	{
+		return meta.offset;
 	}
 
 

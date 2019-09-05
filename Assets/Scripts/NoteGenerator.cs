@@ -8,8 +8,9 @@ public class NoteGenerator : MonoBehaviour
 	public GameObject notePrefab;
 	public GameObject guideNotePrefab;
 	public Transform noteGenerator;
+	public Vector3 startPos;
 
-	SMParser sm = new SMParser();
+	SMParser sm;
 
 
 	int bit4 = 4;
@@ -20,10 +21,11 @@ public class NoteGenerator : MonoBehaviour
 	public int multiple;
 	List<List<string>> chartData = new List<List<string>>();
 	// Start is called before the first frame update
-	void Start()
+	void Awake()
 	{
+		sm = gameObject.GetComponent<SMParser>();
 
-		bpm = 185.0f;
+		bpm = sm.bpm;
 		multiple = 2;
 		chartData = sm.getNoteData();
 		
@@ -39,7 +41,7 @@ public class NoteGenerator : MonoBehaviour
 
 		float noteWidth = width/2;
 		Debug.Log(width + " " + height + " " + noteWidth + " ");
-		transform.position = new Vector3(0, height * chartData.Count, 0);
+		startPos = new Vector3(0, height * chartData.Count * multiple, 0);
 		notePrefab.transform.position = new Vector3(0, height * chartData.Count * multiple, 0);
 		guideNotePrefab.transform.position = new Vector3(0, height * chartData.Count * multiple, 0);
 		for (int i = 0; i < chartData.Count; i++)
@@ -92,70 +94,70 @@ public class NoteGenerator : MonoBehaviour
 			
 			if (chartData[index][i].Equals("01"))
 			{
-				notePrefab.transform.Translate(new Vector3(2, 0, 0));
-				guideNotePrefab.transform.Translate(new Vector3(2, 0, 0));
-				Instantiate(notePrefab);
+				notePrefab.transform.Translate(new Vector3(6, 0, 0));
+				guideNotePrefab.transform.Translate(new Vector3(6, 0, 0));
+				Instantiate(notePrefab, noteGenerator);
 				transform.SetParent(noteGenerator);
-				notePrefab.transform.Translate(new Vector3(-2, -phraseHeight / bits * multiple, 0));
-				guideNotePrefab.transform.Translate(new Vector3(-2, -phraseHeight / bits * multiple, 0));
+				notePrefab.transform.Translate(new Vector3(-6, -phraseHeight / bits * multiple, 0));
+				guideNotePrefab.transform.Translate(new Vector3(-6, -phraseHeight / bits * multiple, 0));
 			}
 			//오른쪽 일반노트
 			else if(chartData[index][i].Equals("10"))
 			{
-				notePrefab.transform.Translate(new Vector3(-2, 0, 0));
-				guideNotePrefab.transform.Translate(new Vector3(-2, 0, 0));
-				Instantiate(notePrefab);
+				notePrefab.transform.Translate(new Vector3(-6, 0, 0));
+				guideNotePrefab.transform.Translate(new Vector3(-6, 0, 0));
+				Instantiate(notePrefab, noteGenerator);
 				transform.SetParent(noteGenerator);
-				notePrefab.transform.Translate(new Vector3(2, -phraseHeight / bits * multiple, 0));
-				guideNotePrefab.transform.Translate(new Vector3(2, -phraseHeight / bits * multiple, 0));
+				notePrefab.transform.Translate(new Vector3(6, -phraseHeight / bits * multiple, 0));
+				guideNotePrefab.transform.Translate(new Vector3(6, -phraseHeight / bits * multiple, 0));
 			}
 			//왼쪽 일반노트
 			else if(chartData[index][i].Equals("11"))
 			{
-				notePrefab.transform.Translate(new Vector3(-2, 0, 0));
-				guideNotePrefab.transform.Translate(new Vector3(-2, 0, 0));
-				Instantiate(notePrefab);
+				notePrefab.transform.Translate(new Vector3(-6, 0, 0));
+				guideNotePrefab.transform.Translate(new Vector3(-6, 0, 0));
+				Instantiate(notePrefab, noteGenerator);
 				transform.SetParent(noteGenerator);
-				notePrefab.transform.Translate(new Vector3(4, 0, 0));
-				guideNotePrefab.transform.Translate(new Vector3(4, 0, 0));
-				Instantiate(notePrefab);
+				notePrefab.transform.Translate(new Vector3(12, 0, 0));
+				guideNotePrefab.transform.Translate(new Vector3(12, 0, 0));
+				Instantiate(notePrefab, noteGenerator);
 				transform.SetParent(noteGenerator);
-				notePrefab.transform.Translate(new Vector3(-2, -phraseHeight / bits * multiple, 0));
-				guideNotePrefab.transform.Translate(new Vector3(-2, -phraseHeight / bits * multiple, 0));
+				notePrefab.transform.Translate(new Vector3(-6, -phraseHeight / bits * multiple, 0));
+				guideNotePrefab.transform.Translate(new Vector3(-6, -phraseHeight / bits * multiple, 0));
 			}
 			//동타 일반노트
 			else if (chartData[index][i].Equals("0F"))
 			{
-				notePrefab.transform.Translate(new Vector3(2, 0, 0));
-				guideNotePrefab.transform.Translate(new Vector3(2, 0, 0));
-				Instantiate(guideNotePrefab);
+				notePrefab.transform.Translate(new Vector3(6, 0, 0));
+				guideNotePrefab.transform.Translate(new Vector3(6, 0, 0));
+				Instantiate(guideNotePrefab, noteGenerator);
 				transform.SetParent(noteGenerator);
-				notePrefab.transform.Translate(new Vector3(-2, -phraseHeight / bits * multiple, 0));
-				guideNotePrefab.transform.Translate(new Vector3(-2, -phraseHeight / bits * multiple, 0));
+				notePrefab.transform.Translate(new Vector3(-6, -phraseHeight / bits * multiple, 0));
+				guideNotePrefab.transform.Translate(new Vector3(-6, -phraseHeight / bits * multiple, 0));
 			}
 			//오른쪽 가이드노트
 			else if (chartData[index][i].Equals("F0"))
 			{
-				notePrefab.transform.Translate(new Vector3(-2, 0, 0));
-				guideNotePrefab.transform.Translate(new Vector3(-2, 0, 0));
-				Instantiate(guideNotePrefab);
+				notePrefab.transform.Translate(new Vector3(-6, 0, 0));
+				guideNotePrefab.transform.Translate(new Vector3(-6, 0, 0));
+				Instantiate(guideNotePrefab, noteGenerator);
 				transform.SetParent(noteGenerator);
-				notePrefab.transform.Translate(new Vector3(2, -phraseHeight / bits * multiple, 0));
-				guideNotePrefab.transform.Translate(new Vector3(2, -phraseHeight / bits * multiple, 0));
+				notePrefab.transform.Translate(new Vector3(6, -phraseHeight / bits * multiple, 0));
+				guideNotePrefab.transform.Translate(new Vector3(6, -phraseHeight / bits * multiple, 0));
 			}
 			//왼쪽 가이드노트
 			else if (chartData[index][i].Equals("FF"))
 			{
-				notePrefab.transform.Translate(new Vector3(-2, 0, 0));
-				guideNotePrefab.transform.Translate(new Vector3(-2, 0, 0));
-				Instantiate(guideNotePrefab);
+				notePrefab.transform.Translate(new Vector3(-6, 0, 0));
+				guideNotePrefab.transform.Translate(new Vector3(-6, 0, 0));
+				Instantiate(guideNotePrefab, noteGenerator);
 				transform.SetParent(noteGenerator);
-				notePrefab.transform.Translate(new Vector3(4, 0, 0));
-				guideNotePrefab.transform.Translate(new Vector3(4, 0, 0));
-				Instantiate(guideNotePrefab);
+				notePrefab.transform.Translate(new Vector3(12, 0, 0));
+				guideNotePrefab.transform.Translate(new Vector3(12, 0, 0));
+				Instantiate(guideNotePrefab, noteGenerator);
 				transform.SetParent(noteGenerator);
-				notePrefab.transform.Translate(new Vector3(-2, -phraseHeight / bits * multiple, 0));
-				guideNotePrefab.transform.Translate(new Vector3(-2, -phraseHeight / bits * multiple, 0));
+				notePrefab.transform.Translate(new Vector3(-6, -phraseHeight / bits * multiple, 0));
+				guideNotePrefab.transform.Translate(new Vector3(-6, -phraseHeight / bits * multiple, 0));
 			}
 			//동타 가이드노트
 			else
@@ -168,13 +170,10 @@ public class NoteGenerator : MonoBehaviour
 			
 		}
 	}
-	private void Update()
+
+	public Vector3 setStartPos(Vector3 pos)
 	{
-		
-	}
-	public void setMeta(float bpm, float multiple)
-	{
-		bpm = sm.bpm;
-		multiple = this.multiple;
+		pos = startPos;
+		return pos;
 	}
 }
